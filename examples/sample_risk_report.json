@@ -1,0 +1,41 @@
+{
+  "summary": {
+    "total_nodes": 4,
+    "total_edges": 3,
+    "critical_nodes": 2,
+    "high_nodes": 0,
+    "medium_nodes": 0,
+    "low_nodes": 2,
+    "total_chains": 2
+  },
+  "high_risk_nodes": [
+    {
+      "id": "role-global-admin",
+      "display_name": "Global Administrator",
+      "node_type": "directory_role",
+      "risk_level": "critical",
+      "properties": { "roleTemplateId": "62e90394-69f5-4237-9190-012177145e10" }
+    },
+    {
+      "id": "sp-devops",
+      "display_name": "DevOps Pipeline SP",
+      "node_type": "service_principal",
+      "risk_level": "critical",
+      "properties": { "permissions": ["RoleManagement.ReadWrite.Directory"] }
+    }
+  ],
+  "privilege_chains": [
+    {
+      "path": ["user-alice", "group-it-admins", "role-global-admin"],
+      "node_names": ["Alice Meier", "IT Admins", "Global Administrator"],
+      "risk_level": "critical",
+      "description": "2-hop chain reaching Global Administrator (critical)"
+    },
+    {
+      "path": ["sp-devops", "role-global-admin"],
+      "node_names": ["DevOps Pipeline SP", "Global Administrator"],
+      "risk_level": "critical",
+      "description": "1-hop chain reaching Global Administrator (critical)"
+    }
+  ]
+}

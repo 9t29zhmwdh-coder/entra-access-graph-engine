@@ -1,0 +1,37 @@
+{
+  "nodes": {
+    "user-alice": {
+      "id": "user-alice",
+      "display_name": "Alice Meier",
+      "node_type": "user",
+      "risk_level": "low",
+      "properties": { "userPrincipalName": "alice@contoso.com" }
+    },
+    "group-it-admins": {
+      "id": "group-it-admins",
+      "display_name": "IT Admins",
+      "node_type": "group",
+      "risk_level": "low",
+      "properties": {}
+    },
+    "role-global-admin": {
+      "id": "role-global-admin",
+      "display_name": "Global Administrator",
+      "node_type": "directory_role",
+      "risk_level": "critical",
+      "properties": { "roleTemplateId": "62e90394-69f5-4237-9190-012177145e10" }
+    },
+    "sp-devops": {
+      "id": "sp-devops",
+      "display_name": "DevOps Pipeline SP",
+      "node_type": "service_principal",
+      "risk_level": "critical",
+      "properties": { "permissions": ["RoleManagement.ReadWrite.Directory"] }
+    }
+  },
+  "edges": [
+    { "from_id": "user-alice",    "to_id": "group-it-admins",   "edge_type": "member_of" },
+    { "from_id": "group-it-admins", "to_id": "role-global-admin", "edge_type": "role_assignment" },
+    { "from_id": "sp-devops",    "to_id": "role-global-admin",   "edge_type": "app_role_assignment" }
+  ]
+}

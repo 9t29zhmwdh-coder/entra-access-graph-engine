@@ -1,0 +1,48 @@
+name: Weekly Risk Scan
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Use mock data instead of live Graph API"
+        required: false
+        default: "false"
+        type: boolean
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Build release binary
+        run: cargo build --release -p eagraph-cli
+
+      - name: Run scan
+        env:
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+        run: |
+          if [ -z "$AZURE_TENANT_ID" ] || [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            echo "No Azure credentials found or dry-run requested — using mock data"
+            ./target/release/eagraph scan --dry-run --format html --output risk-report --min-risk medium
+          else
+            ./target/release/eagraph scan --format html --output risk-report --min-risk medium
+          fi
+
+      - name: Upload risk report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: risk-report-${{ github.run_id }}
+          path: risk-report.*
+          if-no-files-found: ignore
+          retention-days: 30
