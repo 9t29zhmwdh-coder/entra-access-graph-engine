@@ -22,8 +22,8 @@ Ruft Benutzer, Gruppen, Rollen, Applikationen, Service Principals, AppRoleAssign
 | Privilege-Chain-Erkennung | BFS bis Tiefe 6 von jedem Hochrisikoknoten, findet alle Eskalationspfade |
 | Risikobewertung | Bekannte Role-Template-IDs und Graph-API-Berechtigungen → Critical / High / Medium / Low |
 | Drei Exportformate | JSON, GraphML (Gephi/yEd), HTML mit interaktivem D3.js-Graphen |
-| Woechentlicher Scan | GitHub-Actions-Workflow fuer geplante Risikoberichte als Artefakte |
-| Dry-Run-Modus | `--dry-run` nutzt internen Mock-Graphen fuer CI und Demos ohne Azure-Zugangsdaten |
+| Woechentlicher Scan | GitHub-Actions-Workflow für geplante Risikoberichte als Artefakte |
+| Dry-Run-Modus | `--dry-run` nutzt internen Mock-Graphen für CI und Demos ohne Azure-Zugangsdaten |
 
 ---
 
