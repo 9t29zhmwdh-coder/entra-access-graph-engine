@@ -12,7 +12,6 @@ const MAX_DEPTH: usize = 6;
 struct SearchCtx<'a> {
     graph: &'a EntraGraph,
     access_graph: &'a AccessGraph,
-    min_risk: &'a RiskLevel,
 }
 
 pub fn find_privilege_chains(
@@ -20,7 +19,7 @@ pub fn find_privilege_chains(
     access_graph: &AccessGraph,
     min_risk: &RiskLevel,
 ) -> Vec<PrivilegeChain> {
-    let ctx = SearchCtx { graph, access_graph, min_risk };
+    let ctx = SearchCtx { graph, access_graph };
     let mut chains = Vec::new();
 
     // Find target nodes at or above min_risk
