@@ -223,7 +223,7 @@ sim.on('tick',()=>{{
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::model::{Node, NodeType, RiskReport};
+    use crate::model::{Node, NodeType, RiskLevel, RiskReport};
     use std::collections::HashMap;
     use tempfile::NamedTempFile;
 
