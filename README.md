@@ -12,7 +12,13 @@ Fetches Users, Groups, Roles, Applications, Service Principals, AppRoleAssignmen
 
 [![CI](https://github.com/9t29zhmwdh-coder/entra-access-graph-engine/actions/workflows/ci.yml/badge.svg)](https://github.com/9t29zhmwdh-coder/entra-access-graph-engine/actions) ![Microsoft | Entra ID](https://img.shields.io/badge/Microsoft-Entra_ID-0078d4?logo=microsoftazure&logoColor=white) ![Platform](https://img.shields.io/badge/Platform-Windows_%7C_Ubuntu-lightgrey) ![Rust](https://img.shields.io/badge/Rust-CE422B?logo=rust&logoColor=white) ![AI | Claude Code](https://img.shields.io/badge/AI-Claude_Code-black?logo=anthropic&logoColor=white) ![AI | Copilot](https://img.shields.io/badge/AI-Copilot-black?logo=github&logoColor=white)
 
+> **How it runs:** This is a command-line tool, not a desktop app and not a server. `eagraph scan` runs once and writes a report (JSON/GraphML/HTML); there is no installer and no background process.
+
+![entra-access-graph-engine](docs/screenshot.png)
+
 ---
+
+**In practice:** you get an HTML report with an interactive graph showing which accounts can reach admin rights through which chains, fully testable without Azure credentials via `--dry-run`.
 
 ## Features
 
@@ -62,6 +68,12 @@ export AZURE_CLIENT_ID=your-client-id
 export AZURE_CLIENT_SECRET=your-client-secret
 ./target/release/eagraph scan --format html --output report --min-risk high
 ```
+
+---
+
+## Uninstall / Cleanup
+
+Delete the `target/` build directory and any generated report files (`report.html`, `.json`, `.graphml`). No credentials or intermediate data are stored outside these files.
 
 ---
 
