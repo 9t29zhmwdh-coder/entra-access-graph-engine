@@ -8,21 +8,27 @@
 
 **Alle Entra-ID-Objekte in einen Zugriffsgraphen umwandeln. Eskalationspfade, versteckte Admin-Chains und Risikobewertungen erkennen. Rust, Offline-first, OTLP-ready.**
 
-Ruft Benutzer, Gruppen, Rollen, Applikationen, Service Principals, AppRoleAssignments und DirectoryRoles ueber die Microsoft Graph API ab und erstellt daraus einen gerichteten Zugriffsgraphen. Die Engine erkennt Privilege-Escalation-Pfade, versteckte Admin-Chains (App → SP → Gruppe → GlobalAdmin) und klassifiziert jeden Knoten und jeden Pfad nach Risiko (Low / Medium / High / Critical). Export als JSON, GraphML oder selbstenthaltenem HTML-Report mit interaktivem D3.js-Graphen.
+Ruft Benutzer, Gruppen, Rollen, Applikationen, Service Principals, AppRoleAssignments und DirectoryRoles über die Microsoft Graph API ab und erstellt daraus einen gerichteten Zugriffsgraphen. Die Engine erkennt Privilege-Escalation-Pfade, versteckte Admin-Chains (App → SP → Gruppe → GlobalAdmin) und klassifiziert jeden Knoten und jeden Pfad nach Risiko (Low / Medium / High / Critical). Export als JSON, GraphML oder selbstenthaltenem HTML-Report mit interaktivem D3.js-Graphen.
 
 [![CI](https://github.com/9t29zhmwdh-coder/entra-access-graph-engine/actions/workflows/ci.yml/badge.svg)](https://github.com/9t29zhmwdh-coder/entra-access-graph-engine/actions) ![Microsoft | Entra ID](https://img.shields.io/badge/Microsoft-Entra_ID-0078d4?logo=microsoftazure&logoColor=white) ![Platform](https://img.shields.io/badge/Platform-Windows_%7C_Ubuntu-lightgrey) ![Rust](https://img.shields.io/badge/Rust-CE422B?logo=rust&logoColor=white) ![AI | Claude Code](https://img.shields.io/badge/AI-Claude_Code-black?logo=anthropic&logoColor=white) ![AI | Copilot](https://img.shields.io/badge/AI-Copilot-black?logo=github&logoColor=white)
 
+> **So läuft das:** Dieses Tool ist ein Kommandozeilenprogramm, keine Desktop-App und kein Server. `eagraph scan` läuft einmal durch und schreibt einen Report (JSON/GraphML/HTML), es gibt keinen Installer und keinen Hintergrundprozess.
+
+![entra-access-graph-engine](docs/screenshot.png)
+
 ---
+
+**In der Praxis:** Du bekommst einen HTML-Report mit interaktivem Graphen, der zeigt, welche Konten über welche Ketten Admin-Rechte erreichen können, ganz ohne Azure-Zugangsdaten testbar via `--dry-run`.
 
 ## Funktionen
 
 | Funktion | Beschreibung |
 |---|---|
-| Vollstaendige Entra-ID-Abdeckung | Benutzer, Gruppen, DirectoryRoles, Apps, Service Principals, AppRoleAssignments, OAuth2PermissionGrants |
+| Vollständige Entra-ID-Abdeckung | Benutzer, Gruppen, DirectoryRoles, Apps, Service Principals, AppRoleAssignments, OAuth2PermissionGrants |
 | Privilege-Chain-Erkennung | BFS bis Tiefe 6 von jedem Hochrisikoknoten, findet alle Eskalationspfade |
 | Risikobewertung | Bekannte Role-Template-IDs und Graph-API-Berechtigungen → Critical / High / Medium / Low |
 | Drei Exportformate | JSON, GraphML (Gephi/yEd), HTML mit interaktivem D3.js-Graphen |
-| Woechentlicher Scan | GitHub-Actions-Workflow für geplante Risikoberichte als Artefakte |
+| Wöchentlicher Scan | GitHub-Actions-Workflow für geplante Risikoberichte als Artefakte |
 | Dry-Run-Modus | `--dry-run` nutzt internen Mock-Graphen für CI und Demos ohne Azure-Zugangsdaten |
 
 ---
@@ -64,6 +70,12 @@ export AZURE_CLIENT_SECRET=your-client-secret
 
 ---
 
+## Deinstallation / Datenbereinigung
+
+Lösche das `target/` Build-Verzeichnis und die generierten Report-Dateien (`report.html`, `.json`, `.graphml`). Es werden keine Zugangsdaten oder Zwischenergebnisse ausserhalb dieser Dateien gespeichert.
+
+---
+
 ## Projektstruktur
 
 ```
@@ -80,7 +92,7 @@ crates/
     main.rs              CLI-Einstiegspunkt (clap)
 .github/workflows/
   ci.yml                 Ubuntu + Windows CI
-  weekly-scan.yml        Woechentlicher Scan montags 06:00 UTC
+  weekly-scan.yml        Wöchentlicher Scan montags 06:00 UTC
 ```
 
 ---
