@@ -4,7 +4,7 @@
   <h1>entra-access-graph-engine</h1>
 </div>
 
-> 🇬🇧 [English Version](README.md)
+🇬🇧 [English Version](README.md)
 
 **Alle Entra-ID-Objekte in einen Zugriffsgraphen umwandeln. Eskalationspfade, versteckte Admin-Chains und Risikobewertungen erkennen. Rust, Offline-first, OTLP-ready.**
 
