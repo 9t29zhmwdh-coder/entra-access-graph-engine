@@ -18,6 +18,10 @@ Fetches Users, Groups, Roles, Applications, Service Principals, AppRoleAssignmen
 
 ---
 
+> 🌱 New here? → [Step-by-step guide for beginners](GETTING_STARTED.md)
+
+---
+
 **In practice:** you get an HTML report with an interactive graph showing which accounts can reach admin rights through which chains, fully testable without Azure credentials via `--dry-run`.
 
 ## Features
@@ -49,8 +53,6 @@ Fetches Users, Groups, Roles, Applications, Service Principals, AppRoleAssignmen
 
 - Rust 1.78+
 - Azure App Registration with **Application** (not delegated) permissions: `Directory.Read.All`, `RoleManagement.Read.Directory`, `Application.Read.All`
-
-> 🌱 New here? → [Step-by-step guide for beginners](GETTING_STARTED.md)
 
 ---
 
