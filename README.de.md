@@ -18,6 +18,10 @@ Ruft Benutzer, Gruppen, Rollen, Applikationen, Service Principals, AppRoleAssign
 
 ---
 
+> 🌱 Neu hier? → [Schritt-für-Schritt-Anleitung für Einsteiger](GETTING_STARTED.md)
+
+---
+
 **In der Praxis:** Du bekommst einen HTML-Report mit interaktivem Graphen, der zeigt, welche Konten über welche Ketten Admin-Rechte erreichen können, ganz ohne Azure-Zugangsdaten testbar via `--dry-run`.
 
 ## Funktionen
