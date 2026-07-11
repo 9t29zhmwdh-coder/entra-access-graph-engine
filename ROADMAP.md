@@ -41,6 +41,17 @@
 - [ ] PIM (Privileged Identity Management) eligible assignment analysis
 - [ ] Comparison mode: diff two snapshots to detect new escalation paths
 
+## Dual-Licensing Readiness
+
+Assessed 2026-07-11 as a Dual-Licensing candidate (Community MIT + Commercial/Enterprise tier): identity attack-path analysis for Entra ID/Active Directory is one of the most established commercial security categories (BloodHound Enterprise sells exactly this capability), and this project's own roadmap already lists several classic enterprise differentiators. Not ready yet; blocked on:
+
+- [ ] No multi-tenant support yet (v0.3 item above): MSPs and consultancies scanning multiple customer tenants are a natural Commercial-tier audience
+- [ ] No SIEM export yet (Sentinel/Splunk, Future item above): a Commercial tier's core value here is usually turnkey integration into an org's existing security stack
+- [ ] No PIM analysis or automated remediation suggestions yet (v0.3/Future items above): still roadmap entries, not implemented
+- [ ] No server or API component to gate a Commercial tier against: today this is a pure local CLI with no persistence layer
+
+Once multi-tenant support (v0.3) and SIEM export land, revisit: candidate Enterprise-only features would be multi-tenant scanning, Sentinel/Splunk export, PIM analysis, and automated remediation suggestions, with the core graph-building and chain-detection engine (Microsoft Graph client, node/edge model, BFS chain detector, risk scorer, CLI) staying Community/MIT.
+
 ---
 
 **Author:** [Rafael Yilmaz](https://github.com/9t29zhmwdh-coder) · **Status:** v0.1.0 · **Last Updated:** June 2026
