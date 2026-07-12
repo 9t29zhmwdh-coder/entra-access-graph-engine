@@ -1,0 +1,111 @@
+RayStudio Commercial License
+
+Copyright (c) 2026 RayStudio, Rafael Yilmaz (https://github.com/9t29zhmwdh-coder)
+
+This Commercial License applies exclusively to the Enterprise features of
+this software, as identified in ENTERPRISE_FEATURES.md. It does not apply to,
+and does not modify, the terms of the MIT License (see LICENSE) under which
+the Community edition of this software is distributed. Nothing in this
+document restricts any right already granted under the MIT License for code
+released under it.
+
+1. GRANT OF LICENSE
+
+   Subject to payment of the applicable fees and acceptance of these terms,
+   RayStudio grants the Licensee a non-exclusive, non-transferable, revocable
+   license to use the Enterprise features of this software for the
+   Licensee's internal business purposes, strictly limited to the number of
+   seats, instances, or deployments, and the deployment method, specified in
+   the applicable order. No purchase, at any price, grants any right to use,
+   embed, pre-install, or deploy the Enterprise features beyond the scope
+   expressly stated in that order. In particular, embedding or pre-installing
+   the Enterprise features into another product, operating system image, or
+   device firmware for distribution to third parties (an "OEM Deployment")
+   is outside the scope of any standard or marketplace order and requires a
+   separate written agreement expressly authorizing that specific scope and
+   volume, regardless of the price paid for any other order.
+
+2. RESTRICTIONS
+
+   The Licensee may not: (a) redistribute, sublicense, rent, lease, or resell
+   the Enterprise features; (b) reverse engineer, decompile, or disassemble
+   the Enterprise features, except to the extent such restriction is
+   prohibited by applicable law; (c) remove or alter any copyright,
+   trademark, or other proprietary notice; (d) use the Enterprise features to
+   build or support a product or service that competes with this software;
+   (e) deploy or embed the Enterprise features at a scale, or in a manner
+   (including any OEM Deployment), exceeding the scope of the applicable
+   order. Any use exceeding the scope of the applicable order is
+   unauthorized and does not create any license, regardless of payment.
+
+3. DISCLAIMER OF WARRANTIES
+
+   THE ENTERPRISE FEATURES ARE PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT
+   WARRANTY OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE,
+   INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OF MERCHANTABILITY,
+   SATISFACTORY QUALITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND
+   NON-INFRINGEMENT, AND ANY WARRANTIES ARISING OUT OF COURSE OF DEALING OR
+   USAGE OF TRADE. RAYSTUDIO DOES NOT WARRANT AND EXPRESSLY DISCLAIMS THAT
+   THE ENTERPRISE FEATURES WILL MEET THE LICENSEE'S REQUIREMENTS, WILL
+   FUNCTION AS DESCRIBED, WILL BE COMPATIBLE WITH ANY PARTICULAR HARDWARE,
+   SOFTWARE, SYSTEM, OR DATA, WILL OPERATE UNINTERRUPTED OR ERROR-FREE, OR
+   WILL BE SECURE OR FREE OF HARMFUL COMPONENTS. THE LICENSEE USES THE
+   ENTERPRISE FEATURES ENTIRELY AT ITS OWN RISK.
+
+4. LIMITATION OF LIABILITY
+
+   TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW:
+
+   (A) IN NO EVENT SHALL RAYSTUDIO OR RAFAEL YILMAZ BE LIABLE FOR ANY
+   INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE
+   DAMAGES OF ANY KIND, WHETHER ARISING IN CONTRACT, TORT (INCLUDING
+   NEGLIGENCE), STRICT LIABILITY, OR OTHERWISE, INCLUDING WITHOUT LIMITATION
+   ANY DAMAGES FOR LOSS OF PROFITS, LOSS OF REVENUE, LOSS OR CORRUPTION OF
+   DATA, LOSS OF GOODWILL OR BUSINESS OPPORTUNITY, BUSINESS INTERRUPTION OR
+   PRODUCTION DOWNTIME, OR ANY SECURITY INCIDENT OR UNAUTHORIZED ACCESS TO OR
+   ALTERATION OF THE LICENSEE'S DATA OR SYSTEMS, EVEN IF RAYSTUDIO HAS BEEN
+   ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+   (B) RAYSTUDIO'S TOTAL AGGREGATE LIABILITY ARISING OUT OF OR RELATED TO
+   THIS LICENSE OR THE ENTERPRISE FEATURES, FOR ANY AND ALL CLAIMS
+   COMBINED, WHETHER IN CONTRACT, TORT, OR OTHERWISE, SHALL NOT EXCEED THE
+   TOTAL AMOUNT ACTUALLY PAID BY THE LICENSEE FOR THE ENTERPRISE FEATURES
+   GIVING RISE TO THE CLAIM. NO LIABILITY OF ANY KIND SHALL ARISE BEYOND
+   THIS AMOUNT, AND NO MINIMUM AMOUNT APPLIES IN ITS PLACE.
+
+   (C) THE FOREGOING LIMITATIONS APPLY EVEN IF ANY LIMITED REMEDY FAILS OF
+   ITS ESSENTIAL PURPOSE, AND ARE AN ESSENTIAL BASIS OF THE BARGAIN BETWEEN
+   THE PARTIES.
+
+5. INDEMNIFICATION
+
+   The Licensee agrees to indemnify, defend, and hold harmless RayStudio and
+   Rafael Yilmaz from and against any claims, damages, liabilities, costs,
+   and expenses (including reasonable legal fees) arising out of the
+   Licensee's use of the Enterprise features in breach of this license or
+   applicable law.
+
+6. TERM AND TERMINATION
+
+   This license is effective until terminated. It terminates automatically,
+   without notice, upon any breach of its terms. Upon termination, the
+   Licensee must immediately cease all use of the Enterprise features and
+   destroy or delete all copies in its possession or control.
+
+7. GOVERNING LAW AND JURISDICTION
+
+   This license is governed by the laws of Switzerland, excluding its
+   conflict-of-law rules. The exclusive place of jurisdiction for any dispute
+   arising out of or in connection with this license is the courts of the
+   Canton of Aargau, Switzerland.
+
+8. ENTIRE AGREEMENT
+
+   This license, together with any applicable order confirming the scope of
+   the grant, constitutes the entire agreement between the parties regarding
+   the Enterprise features and supersedes any prior or contemporaneous
+   understanding on the subject.
+
+9. CONTACT
+
+   For commercial licensing inquiries, see COMMERCIAL.md.
