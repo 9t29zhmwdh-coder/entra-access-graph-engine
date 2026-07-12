@@ -11,6 +11,9 @@ on:
         default: "false"
         type: boolean
 
+permissions:
+  contents: read
+
 jobs:
   scan:
     runs-on: ubuntu-latest
