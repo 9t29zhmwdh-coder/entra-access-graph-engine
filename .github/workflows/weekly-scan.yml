@@ -35,7 +35,7 @@ jobs:
           AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
         run: |
           if [ -z "$AZURE_TENANT_ID" ] || [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
-            echo "No Azure credentials found or dry-run requested — using mock data"
+            echo "No Azure credentials found or dry-run requested, using mock data"
             ./target/release/eagraph scan --dry-run --format html --output risk-report --min-risk medium
           else
             ./target/release/eagraph scan --format html --output risk-report --min-risk medium

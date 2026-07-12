@@ -4,7 +4,7 @@ This guide assumes zero prior experience with Rust, the command line, or Git. It
 
 If you get stuck, check the [Troubleshooting](#troubleshooting) table at the bottom of your platform's section.
 
-There is no installer and no graphical interface — this is a command-line tool. You will type commands into a terminal window and read the output there.
+There is no installer and no graphical interface: this is a command-line tool. You will type commands into a terminal window and read the output there.
 
 ---
 
@@ -12,7 +12,7 @@ There is no installer and no graphical interface — this is a command-line tool
 
 ### 1. Open a terminal
 
-Right-click the **Start** button and choose **Terminal** (or **Windows PowerShell** on older versions of Windows). A dark window with a blinking cursor will open — that's your terminal.
+Right-click the **Start** button and choose **Terminal** (or **Windows PowerShell** on older versions of Windows). A dark window with a blinking cursor will open: that's your terminal.
 
 ### 2. Check if Rust is already installed
 
@@ -28,7 +28,7 @@ cargo --version
 
 ### 3. Install Rust
 
-Go to [https://rustup.rs](https://rustup.rs) in your browser. Download `rustup-init.exe` and run it. Accept the default options in the installer. When it finishes, **close and reopen your terminal** (this is important — see Troubleshooting) and repeat step 2 to confirm `rustc --version` now works.
+Go to [https://rustup.rs](https://rustup.rs) in your browser. Download `rustup-init.exe` and run it. Accept the default options in the installer. When it finishes, **close and reopen your terminal** (this is important, see Troubleshooting) and repeat step 2 to confirm `rustc --version` now works.
 
 ### 4. Get the code
 
@@ -58,11 +58,11 @@ cd Documents\entra-access-graph-engine
 cargo build --release
 ```
 
-This downloads dependencies and compiles the tool. It can take a few minutes the first time. You'll see a lot of text scroll by — that's normal.
+This downloads dependencies and compiles the tool. It can take a few minutes the first time. You'll see a lot of text scroll by, that's normal.
 
 ### 7. Run it
 
-Try the demo mode first — it needs no Azure account or credentials at all, so you can see real output immediately:
+Try the demo mode first: it needs no Azure account or credentials at all, so you can see real output immediately:
 
 ```powershell
 .\target\release\eagraph.exe scan --dry-run --format html --output report
@@ -105,7 +105,7 @@ rustc --version
 cargo --version
 ```
 
-- If you see version numbers, Rust is installed — skip to step 4.
+- If you see version numbers, Rust is installed: skip to step 4.
 - If you see `command not found`, Rust isn't installed yet, or it isn't on your PATH. Continue to step 3.
 
 ### 3. Install Rust
@@ -147,7 +147,7 @@ cd entra-access-graph-engine
 cargo build --release
 ```
 
-The first build downloads dependencies and compiles everything — this can take a few minutes.
+The first build downloads dependencies and compiles everything; this can take a few minutes.
 
 ### 7. Run it
 
@@ -241,7 +241,7 @@ Start with the demo mode, no Azure credentials required:
 ./target/release/eagraph scan --dry-run --format html --output report
 ```
 
-This writes `report.html` using built-in mock data — open it in your browser to explore the interactive graph.
+This writes `report.html` using built-in mock data; open it in your browser to explore the interactive graph.
 
 For a live scan (see [README.md](README.md#requirements) for the required Azure App Registration permissions):
 

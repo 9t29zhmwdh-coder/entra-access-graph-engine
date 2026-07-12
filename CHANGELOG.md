@@ -3,6 +3,12 @@
 All notable changes to entra-access-graph-engine will be documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.1.7] - 2026-07-12
+
+### Fixed
+
+- Removed em-dashes and en-dashes across the repo (GETTING_STARTED.md, `.github/workflows/weekly-scan.yml`, `crates/eagraph-core/src/chain_detector.rs`). Swiss German orthography rule.
+
 ## [0.1.6] - 2026-07-12
 
 ### Added

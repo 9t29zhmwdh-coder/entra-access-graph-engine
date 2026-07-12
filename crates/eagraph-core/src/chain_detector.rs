@@ -151,7 +151,7 @@ mod tests {
     #[test]
     fn no_chains_below_threshold() {
         let (ag, eg) = test_graph();
-        // Filter for Critical only — alice→admins→Global Admin IS Critical
+        // Filter for Critical only: alice→admins→Global Admin IS Critical
         let chains = find_privilege_chains(&eg, &ag, &RiskLevel::Critical);
         assert!(!chains.is_empty());
     }
