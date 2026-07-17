@@ -36,6 +36,15 @@ enum Command {
         #[arg(long, env = "AZURE_CLIENT_SECRET", help = "App registration client secret")]
         client_secret: Option<String>,
 
+        #[arg(
+            long,
+            env = "ENTRA_ACCESS_TOKEN",
+            help = "Bring-your-own-token: an already-issued Graph access token. \
+                    Overrides tenant-id/client-id/client-secret when set; no app \
+                    registration or client secret needed."
+        )]
+        access_token: Option<String>,
+
         #[arg(long, default_value = "json", help = "Output format")]
         format: OutputFormat,
 
@@ -92,29 +101,54 @@ async fn main() -> Result<()> {
             tenant_id,
             client_id,
             client_secret,
+            access_token,
             format,
             output,
             min_risk,
             dry_run,
         } => {
-            run_scan(
+            let auth = ScanAuth {
                 tenant_id,
                 client_id,
                 client_secret,
-                format,
-                output,
-                RiskLevel::from(min_risk),
-                dry_run,
-            )
-            .await
+                access_token,
+            };
+            run_scan(auth, format, output, RiskLevel::from(min_risk), dry_run).await
         }
     }
 }
 
-async fn run_scan(
+/// Credentials for a live scan: either bring-your-own-token (`access_token`
+/// set) or app-only client-credentials (all three of tenant/client id/secret
+/// set). `from_token()` takes precedence when both are present.
+struct ScanAuth {
     tenant_id: Option<String>,
     client_id: Option<String>,
     client_secret: Option<String>,
+    access_token: Option<String>,
+}
+
+impl ScanAuth {
+    fn into_client(self) -> Result<GraphClient> {
+        if let Some(token) = self.access_token {
+            info!("Using bring-your-own-token auth");
+            return Ok(GraphClient::from_token(token));
+        }
+        let tid = self
+            .tenant_id
+            .context("AZURE_TENANT_ID is required for live scan (or pass --access-token)")?;
+        let cid = self
+            .client_id
+            .context("AZURE_CLIENT_ID is required for live scan (or pass --access-token)")?;
+        let csecret = self
+            .client_secret
+            .context("AZURE_CLIENT_SECRET is required for live scan (or pass --access-token)")?;
+        Ok(GraphClient::new(tid, cid, csecret))
+    }
+}
+
+async fn run_scan(
+    auth: ScanAuth,
     format: OutputFormat,
     output: PathBuf,
     min_risk: RiskLevel,
@@ -124,10 +158,7 @@ async fn run_scan(
         info!("Dry-run mode: using mock graph data");
         mock_access_graph()
     } else {
-        let tid = tenant_id.context("AZURE_TENANT_ID is required for live scan")?;
-        let cid = client_id.context("AZURE_CLIENT_ID is required for live scan")?;
-        let csecret = client_secret.context("AZURE_CLIENT_SECRET is required for live scan")?;
-        let client = GraphClient::new(tid, cid, csecret);
+        let client = auth.into_client()?;
         build_access_graph(&client).await?
     };
 

@@ -3,6 +3,12 @@
 All notable changes to entra-access-graph-engine will be documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.1.8] - 2026-07-17
+
+### Added
+
+- Bring-your-own-token auth for `eagraph scan`: a new `--access-token`/`ENTRA_ACCESS_TOKEN` option lets callers pass an already-issued Graph access token instead of an app registration's client credentials. `GraphClient::from_token()` in `eagraph-core` skips the client-credentials exchange entirely when a token is supplied. `--tenant-id`/`--client-id`/`--client-secret` remain fully supported and unchanged for callers that prefer app-only auth.
+
 ## [0.1.7] - 2026-07-12
 
 ### Fixed

@@ -3,9 +3,10 @@ use serde::Deserialize;
 use serde_json::Value;
 
 pub struct GraphClient {
-    tenant_id: String,
-    client_id: String,
-    client_secret: String,
+    tenant_id: Option<String>,
+    client_id: Option<String>,
+    client_secret: Option<String>,
+    bearer_token: Option<String>,
     http: reqwest::Client,
 }
 
@@ -22,27 +23,52 @@ struct GraphPage {
 }
 
 impl GraphClient {
+    /// App-only auth: exchanges an app registration's client credentials for a
+    /// token on every `authenticate()` call.
     pub fn new(tenant_id: String, client_id: String, client_secret: String) -> Self {
         Self {
-            tenant_id,
-            client_id,
-            client_secret,
+            tenant_id: Some(tenant_id),
+            client_id: Some(client_id),
+            client_secret: Some(client_secret),
+            bearer_token: None,
+            http: reqwest::Client::new(),
+        }
+    }
+
+    /// Bring-your-own-token: reuses an already-issued (e.g. delegated) Graph
+    /// access token instead of performing a client-credentials exchange. No
+    /// app registration / client secret required.
+    pub fn from_token(access_token: String) -> Self {
+        Self {
+            tenant_id: None,
+            client_id: None,
+            client_secret: None,
+            bearer_token: Some(access_token),
             http: reqwest::Client::new(),
         }
     }
 
     async fn token(&self) -> Result<String> {
-        let url = format!(
-            "https://login.microsoftonline.com/{}/oauth2/v2.0/token",
-            self.tenant_id
-        );
+        let tenant_id = self
+            .tenant_id
+            .as_deref()
+            .context("tenant_id is required for client-credentials auth")?;
+        let client_id = self
+            .client_id
+            .as_deref()
+            .context("client_id is required for client-credentials auth")?;
+        let client_secret = self
+            .client_secret
+            .as_deref()
+            .context("client_secret is required for client-credentials auth")?;
+        let url = format!("https://login.microsoftonline.com/{tenant_id}/oauth2/v2.0/token");
         let resp = self
             .http
             .post(&url)
             .form(&[
                 ("grant_type", "client_credentials"),
-                ("client_id", &self.client_id),
-                ("client_secret", &self.client_secret),
+                ("client_id", client_id),
+                ("client_secret", client_secret),
                 ("scope", "https://graph.microsoft.com/.default"),
             ])
             .send()
@@ -159,6 +185,9 @@ impl GraphClient {
     }
 
     pub async fn authenticate(&self) -> Result<String> {
+        if let Some(token) = &self.bearer_token {
+            return Ok(token.clone());
+        }
         self.token().await
     }
 }
