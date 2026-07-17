@@ -1,0 +1,72 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            bin: eagraph
+            asset: eagraph-linux
+          - os: macos-latest
+            bin: eagraph
+            asset: eagraph-macos
+          - os: windows-latest
+            bin: eagraph.exe
+            asset: eagraph-windows.exe
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2.9.1
+
+      - name: Build release binary
+        run: cargo build --release --bin eagraph
+
+      - name: Prepare asset
+        shell: bash
+        run: |
+          mkdir -p dist
+          cp target/release/${{ matrix.bin }} dist/${{ matrix.asset }}
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: ${{ matrix.asset }}
+          path: dist/${{ matrix.asset }}
+          if-no-files-found: error
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/download-artifact@v8
+        with:
+          path: artifacts
+
+      - name: Flatten artifact layout
+        run: |
+          mkdir -p release
+          find artifacts -type f -exec cp {} release/ \;
+          chmod +x release/eagraph-linux release/eagraph-macos
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${{ github.ref_name }}" release/* \
+            --repo ${{ github.repository }} \
+            --title "entra-access-graph-engine ${{ github.ref_name }}" \
+            --notes "See CHANGELOG.md for details. Not code-signed: OS security prompts (Gatekeeper/SmartScreen) may warn on first run; run \`chmod +x\` on macOS/Linux before executing."

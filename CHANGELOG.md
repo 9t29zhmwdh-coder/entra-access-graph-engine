@@ -3,6 +3,16 @@
 All notable changes to entra-access-graph-engine will be documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.0] - 2026-07-17
+
+First stable release: a real release pipeline now builds and attaches
+`eagraph` binaries for Linux, macOS, and Windows to every GitHub
+Release, the prerequisite for a 1.0 release per this portfolio's own
+SemVer discipline.
+
+### Added
+- Release workflow (`release.yml`) that cross-compiles `eagraph` for Linux/macOS/Windows on every `v*` tag push and attaches the binaries to a GitHub Release. Previously there was no prebuilt binary; users had to build from source.
+
 ## [0.1.8] - 2026-07-17
 
 ### Changed
