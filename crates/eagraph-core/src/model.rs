@@ -153,4 +153,13 @@ pub struct RiskReport {
     pub summary: ReportSummary,
     pub high_risk_nodes: Vec<Node>,
     pub privilege_chains: Vec<PrivilegeChain>,
+    /// Alle Nodes (nicht nur high-risk) mit node_type, und alle Edges
+    /// (inkl. MemberOf) - fuer Konsumenten, die die volle Graphstruktur
+    /// brauchen (z.B. eine User x Gruppe Mitgliedschafts-Matrix oder eine
+    /// eigene Node-Link-Visualisierung), ohne selbst neu gegen Graph
+    /// scannen zu muessen.
+    #[serde(default)]
+    pub all_nodes: Vec<Node>,
+    #[serde(default)]
+    pub edges: Vec<Edge>,
 }

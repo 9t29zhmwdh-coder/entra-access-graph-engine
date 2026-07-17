@@ -177,10 +177,15 @@ async fn run_scan(
         .cloned()
         .collect();
 
+    let all_nodes: Vec<_> = graph.nodes.values().cloned().collect();
+    let edges = graph.edges.clone();
+
     let report = RiskReport {
         summary: build_report_summary(&graph, &chains),
         high_risk_nodes,
         privilege_chains: chains,
+        all_nodes,
+        edges,
     };
 
     let ext = match format {
