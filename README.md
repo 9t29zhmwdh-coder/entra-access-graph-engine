@@ -4,7 +4,7 @@
   <h1>entra-access-graph-engine</h1>
 </div>
 
-🇩🇪 [Deutsche Version](README.de.md)
+[🇩🇪 Deutsche Version](README.de.md)
 
 **Map every Entra ID object to a privilege graph. Detect escalation paths, hidden admin chains, and risk scores. Rust, offline-first, OTLP-ready.**
 
