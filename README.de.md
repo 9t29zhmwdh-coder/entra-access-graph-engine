@@ -101,4 +101,25 @@ crates/
 
 ---
 
+## Ausgabebeispiele
+
+Siehe [`examples/sample_graph.json`](examples/sample_graph.json) und [`examples/sample_risk_report.json`](examples/sample_risk_report.json).
+
+---
+
+## Azure-Integration
+
+Siehe [`docs/azure_integration.md`](docs/azure_integration.md) für:
+- Einrichtung der App-Registrierung und benötigte Berechtigungen
+- Konfiguration der GitHub-Actions-Secrets für den wöchentlichen Scan
+- KQL-Abfragen für Application Insights
+
+---
+
+## Roadmap
+
+Siehe [ROADMAP.md](ROADMAP.md).
+
+---
+
 **Autor:** [Rafael Yilmaz](https://github.com/9t29zhmwdh-coder) · **Status:** Active · ![version](https://img.shields.io/github/v/release/9t29zhmwdh-coder/entra-access-graph-engine?color=6b7280&style=flat-square) · **Lizenz:** MIT
