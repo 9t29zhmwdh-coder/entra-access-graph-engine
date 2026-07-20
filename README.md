@@ -11,6 +11,7 @@
 Fetches Users, Groups, Roles, Applications, Service Principals, AppRoleAssignments, and DirectoryRoles from the Microsoft Graph API and builds a directed access graph. The graph engine detects privilege escalation paths, hidden admin chains (App → SP → Group → GlobalAdmin), and classifies each node and path by risk level (Low / Medium / High / Critical). Exports as JSON, GraphML, or a self-contained HTML report with an interactive D3.js force graph.
 
 [![CI](https://github.com/9t29zhmwdh-coder/entra-access-graph-engine/actions/workflows/ci.yml/badge.svg)](https://github.com/9t29zhmwdh-coder/entra-access-graph-engine/actions) ![Microsoft | Entra ID](https://img.shields.io/badge/Microsoft-Entra_ID-0078d4?logo=microsoftazure&logoColor=white) ![Platform](https://img.shields.io/badge/Platform-Windows_%7C_Ubuntu-lightgrey) ![Rust](https://img.shields.io/badge/Rust-CE422B?logo=rust&logoColor=white) ![AI | Claude Code](https://img.shields.io/badge/AI-Claude_Code-black?logo=anthropic&logoColor=white) ![AI | Copilot](https://img.shields.io/badge/AI-Copilot-black?logo=github&logoColor=white)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/9t29zhmwdh-coder/entra-access-graph-engine/badge)](https://securityscorecards.dev/viewer/?uri=github.com/9t29zhmwdh-coder/entra-access-graph-engine)
 
 > **How it runs:** This is a command-line tool, not a desktop app and not a server. `eagraph scan` runs once and writes a report (JSON/GraphML/HTML); there is no installer and no background process.
 
