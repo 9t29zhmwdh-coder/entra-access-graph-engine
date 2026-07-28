@@ -3,6 +3,17 @@
 All notable changes to entra-access-graph-engine will be documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.2] - 2026-07-28
+
+### Added
+
+- `.github/dependabot.yml`, covering GitHub Actions and Cargo with grouped weekly updates. The file was missing, and without it there are no version updates at all: repository security alerts only fire for disclosed vulnerabilities. Follows `engineering-standards` v0.10.0.
+
+### Fixed
+
+- 10 action references were pinned to a mutable tag or branch rather than a commit SHA, `dtolnay/rust-toolchain@stable` among them. A branch HEAD can be moved to point at different code at any time without the workflow file changing, which is exactly what `standards/ci-cd.md` section 2 exists to prevent. All are now pinned to SHAs with the version in the comment. Pinned at their current versions, not upgraded: a major bump belongs in its own reviewed PR, and Dependabot will now propose one.
+- `actions/checkout` pins were inconsistent across workflows. All now use v7.0.1 with the full version in the comment, per `standards/ci-cd.md` section 2.
+
 ## [1.0.1] - 2026-07-20
 
 ### Changed
