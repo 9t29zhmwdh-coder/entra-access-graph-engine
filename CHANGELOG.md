@@ -3,6 +3,15 @@
 All notable changes to entra-access-graph-engine will be documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.3] - 2026-07-29
+
+### Changed
+
+- CodeQL moved from GitHub's default setup to an advanced setup with a committed `.github/workflows/codeql.yml`. The default setup decides on its own when to run and skips pull requests that touch no code of a given language, so a dependency pull request changing only `Cargo.lock` reported `skipping` on the required `Analyze` checks and could never be merged. The workflow runs on every pull request regardless of what changed and uses the `security-extended` query suite, which the default setup does not allow choosing. Required checks are unchanged.
+- The Cargo group in `.github/dependabot.yml` is limited to `minor` and `patch` updates. Without that limit a major bump lands inside a grouped pull request that reads as routine, which is how a breaking change slips in unreviewed.
+
+---
+
 ## [1.0.2] - 2026-07-28
 
 ### Added
