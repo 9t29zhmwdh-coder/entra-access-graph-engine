@@ -3,6 +3,14 @@
 All notable changes to entra-access-graph-engine will be documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.9] - 2026-07-31
+
+### Fixed
+
+- CI checked Linux and Windows but not macOS, while the release workflow builds and publishes a macOS binary. That artefact went out without ever having been compile-checked, so a fault appearing only on macOS would have surfaced in somebody's download rather than in a pull request. The `check` matrix covers all three platforms the release targets.
+
+---
+
 ## [1.0.8] - 2026-07-31
 
 ### Fixed
