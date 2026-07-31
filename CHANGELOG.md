@@ -3,6 +3,16 @@
 All notable changes to entra-access-graph-engine will be documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.7] - 2026-07-31
+
+### Changed
+
+- The README opens with the question this answers instead of the objects it reads. It began with a list of seven Graph object types before saying what any of it is for. The point is that nobody is listed as an administrator by accident: the risk is the path from an app registration through a service principal and a group to a privileged role, which the portal cannot show.
+- The opening names the case this is not for, a list of who currently holds which role, which the Entra portal already answers. The repository description follows.
+- The read-only claim is stated precisely. Rather than "requests no write permission", which misdescribes how the `.default` scope works, it says the only non-`GET` request is the OAuth token call, and points at the three `Read` permissions already listed under Requirements.
+
+---
+
 ## [1.0.6] - 2026-07-29
 
 ### Security

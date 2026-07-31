@@ -6,9 +6,26 @@
 
 [🇩🇪 Deutsche Version](README.de.md)
 
-**Map every Entra ID object to a privilege graph. Detect escalation paths, hidden admin chains, and risk scores. Rust, offline-first, OTLP-ready.**
+**Finds who can quietly become Global Admin in your tenant.**
 
-Fetches Users, Groups, Roles, Applications, Service Principals, AppRoleAssignments, and DirectoryRoles from the Microsoft Graph API and builds a directed access graph. The graph engine detects privilege escalation paths, hidden admin chains (App → SP → Group → GlobalAdmin), and classifies each node and path by risk level (Low / Medium / High / Critical). Exports as JSON, GraphML, or a self-contained HTML report with an interactive D3.js force graph.
+Nobody is listed as an administrator by accident. The risk is the path: an app
+registration owns a service principal, the service principal sits in a group,
+and that group holds a privileged role. Nobody granted anyone Global Admin, and
+yet somebody has it.
+
+This walks the whole directory, builds the graph, and reports the chains that
+end at a privileged role. The output is a self-contained HTML report you can
+hand to somebody who does not have tenant access, or JSON and GraphML if
+something else has to read it.
+
+**Not for you if** you want a list of who currently holds which role. The Entra
+portal shows that, and so does one Graph query. The reason to build a graph is
+the reachability question the portal cannot answer: not who *has* the role, but
+who can *get* it.
+
+Read-only in operation: the only request that is not a `GET` is the OAuth token
+call. It needs three Graph permissions, all of them `Read`, listed under
+Requirements.
 
 [![CI](https://github.com/9t29zhmwdh-coder/entra-access-graph-engine/actions/workflows/ci.yml/badge.svg)](https://github.com/9t29zhmwdh-coder/entra-access-graph-engine/actions) [![CodeQL](https://github.com/9t29zhmwdh-coder/entra-access-graph-engine/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/9t29zhmwdh-coder/entra-access-graph-engine/security/code-scanning) [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/9t29zhmwdh-coder/entra-access-graph-engine/badge)](https://securityscorecards.dev/viewer/?uri=github.com/9t29zhmwdh-coder/entra-access-graph-engine) [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/13710/badge)](https://www.bestpractices.dev/projects/13710)
 
