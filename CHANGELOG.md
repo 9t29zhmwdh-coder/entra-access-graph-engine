@@ -3,6 +3,14 @@
 All notable changes to entra-access-graph-engine will be documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.11] - 2026-09-25
+
+### Security
+
+- The weekly scan workflow no longer pastes the `dry_run` input into its shell script. The value now reaches the script as an environment variable, so a crafted input cannot turn into shell code in a run that holds the Azure credentials.
+
+---
+
 ## [1.0.10] - 2026-08-04
 
 ### Fixed
