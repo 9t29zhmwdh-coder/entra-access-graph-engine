@@ -3,6 +3,22 @@
 All notable changes to entra-access-graph-engine will be documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.12] - 2026-09-27
+
+### Security
+
+- `SECURITY.md` links GitHub's private advisory form in full. The link was missing or relative, so OpenSSF Scorecard found no reporting channel and scored the policy 4 of 10.
+- The supported-versions table named a version line that is no longer current; it now says that the latest release gets security fixes.
+
+### Changed
+
+Dependency updates merged since v1.0.11:
+
+- chore(ci): bump the actions group with 3 updates (#43)
+- chore(ci): bump the actions group across 1 directory with 5 updates (#41)
+
+---
+
 ## [1.0.11] - 2026-09-25
 
 ### Security
