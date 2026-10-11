@@ -3,6 +3,14 @@
 All notable changes to entra-access-graph-engine will be documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.13] - 2026-10-11
+
+### Fixed
+
+- The OpenSSF Scorecard badge in the README showed a broken image on GitHub. The live badge is fetched through GitHub's image proxy, which gives up after four seconds, and the Scorecard lookup behind it often takes longer. The badge is now a small image stored in `docs/badges/` with the score of the last release, so it always loads.
+
+---
+
 ## [1.0.12] - 2026-09-27
 
 ### Security
