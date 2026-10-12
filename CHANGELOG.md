@@ -3,6 +3,16 @@
 All notable changes to entra-access-graph-engine will be documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.14] - 2026-10-12
+
+### Changed
+
+Dependency and CI updates merged since v1.0.13, each with green checks:
+
+- chore(ci): bump the actions group with 5 updates (#45)
+
+---
+
 ## [1.0.13] - 2026-10-11
 
 ### Fixed
